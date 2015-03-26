@@ -21,7 +21,8 @@ echo "Date,".
 while($d = mysql_fetch_assoc($data))
 {
 	//$sum = mysql_fetch_array(mysql_query("select sum(pages) as pgs from file_queue where user_name = '{$d['email']}' and printed = 1"));
-	$dt = explode($d['printing_date']);
+	$d['printing_date'] = date("d-m-Y H:i:s",strtotime("+6 Hours",strtotime($d['printing_date'])));
+	$dt = explode(" ",$d['printing_date']);
 	
 	echo $dt[0].",".
 			$dt[1].",".

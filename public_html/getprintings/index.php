@@ -287,20 +287,48 @@ echo "Date,".
 while($d = mysql_fetch_assoc($data))
 {
 	//$sum = mysql_fetch_array(mysql_query("select sum(pages) as pgs from file_queue where user_name = '{$d['email']}' and printed = 1"));
+	$d['added_dt'] = date("d-m-Y H:i:s",strtotime("+6 Hours",strtotime($d['added_dt'])));
+	
 	$dt = explode(" ",$d['added_dt']);
 	
-	echo " ".date("m/d/Y",strtotime($dt[0])).",".
+	
+	if(date("d/m/Y",strtotime($dt[0])) == "31/12/1969")
+	{
+		$reg = "";
+		$dt[1] = "";
+	}
+	else
+		$reg = date("d/m/Y",strtotime($dt[0]));
+	
+	if(date("d/m/Y",strtotime($d['reg_date'])) == "31/12/1969")
+		$reg1 = "";
+	else
+		$reg1 = date("d/m/Y",strtotime($d['reg_date']));
+	
+	if(date("d/m/Y",strtotime($d['graduate_date'])) == "31/12/1969")
+		$reg3 = "";
+	else
+		$reg3 = date("d/m/Y",strtotime($d['graduate_date']));
+	
+	
+	if(date("d/m/Y",strtotime($d['dob'])) == "31/12/1969")
+		$reg4 = "";
+	else
+		$reg4 = date("d/m/Y",strtotime($d['dob']));
+	
+	
+	echo '="'.$reg. '",'.
 		
 			$dt[1].",".
 			ucfirst($d['fname']).",".
 			ucfirst($d['lname']).",".
 			$d['email'].",". 
-			" ".date("m/d/Y",strtotime($d['reg_date'])).",".
-			$d['dob'].",".
+			'="'.$reg1. '",'.
+			'="'.$reg4. '",'.
 			ucfirst($d['gender']).",".
 			getCountry($d['country']).",".
 			$d['program'].",".
-			" ".date("m/d/Y",strtotime($d['graduate_date'])).",".
+			'="'.$reg3. '",'.
 			$d['pages'].",".
 			"Default,".
 			$d['file_name'].",".

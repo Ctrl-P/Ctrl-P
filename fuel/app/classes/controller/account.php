@@ -511,7 +511,7 @@ class Controller_Account extends Controller
 			$view->balance = $ac [0] ['balance'];
 			$view->head = $head;
 			
-			$config = array ('path' => DOCROOT . 'files', 'randomize' => true, 'ext_whitelist' => array ('jpg','JPG' ) );
+			$config = array ('path' => DOCROOT . 'files', 'randomize' => true, 'ext_whitelist' => array ('pdf','PDF' ) );
 				
 			Upload::process ( $config );
 				

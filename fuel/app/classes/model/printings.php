@@ -32,13 +32,18 @@ class Model_Printings
 	
 	function upload_ad($internal, $name, $max)
 	{
+		
+		
+	
+		
 		$query = DB::insert('ads')->set(array(
 		
 				
 				'internal_location'=>$internal,
 				'given_name' => $name,
 				'maximum_times' => $max,
-				'current_times' => 0,
+				'current_times' => 0
+				
 		
 			
 		

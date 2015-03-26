@@ -51,11 +51,30 @@
 for($i = 0; $i < count($ads); $i++)
 {
 
+$pdf = "files/{$ads[$i]['internal_location']}";  
+$fp_pdf = fopen($pdf, 'rb');
+
+$img = new imagick(); // [0] can be used to set page number
+$img->readImageFile($fp_pdf);
+$img->setImageFormat( "jpg" );
+$img->setImageCompression(imagick::COMPRESSION_JPEG);
+$img->setImageCompressionQuality(90);
+
+$img->setResolution(300,300);
+
+$img->setImageUnits(imagick::RESOLUTION_PIXELSPERINCH);
+
+$data = $img->getImageBlob();
+$f = "files/ads/".rand(0,8000).".jpg";
+file_put_contents($f, $data);
+
+
+
 ?>
 
 <tr style="font-size:13px;">
 <td><?= $ads[$i]['given_name'] ?></td>
-<td><div style="width:530px; height:100px; background: url('../files/<?php echo $ads[$i]['internal_location'];  ?>') no-repeat -42px -766px ; "  ></td>
+<td><div style="width:530px; height:100px; background: url('<?= "../".$f ?>') no-repeat  ; "  ></td>
 <td><?= $ads[$i]['current_times'] ?></td>
 <td><?= $ads[$i]['maximum_times'] ?></td>
 <td><?= $ads[$i]['status'] ?></td>
