@@ -69,6 +69,16 @@ $f = "files/ads/".rand(0,8000).".jpg";
 file_put_contents($f, $data);
 
 
+if($ads[$i]['maximum_times'] == "0")
+	$ads[$i]['status'] = "Active";
+else
+{
+
+if($ads[$i]['current_times'] < $ads[$i]['maximum_times'])
+	$ads[$i]['status'] = "Active";
+else 
+	$ads[$i]['status'] = "Depleted";
+}
 
 ?>
 

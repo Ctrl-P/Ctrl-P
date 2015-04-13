@@ -1,4 +1,8 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 mysql_connect("localhost","hecncit_project","p123456");
 mysql_select_db("hecncit_project");
 
@@ -294,7 +298,7 @@ while($d = mysql_fetch_assoc($data))
 	
 	if(date("d/m/Y",strtotime($dt[0])) == "31/12/1969")
 	{
-		$reg = "";
+		$reg = ""; 
 		$dt[1] = "";
 	}
 	else
