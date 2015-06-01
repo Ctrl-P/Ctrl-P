@@ -57,7 +57,7 @@
 			
 			<a href="javascript:history.back()">Back to the previous page</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a href="http://hec.ncitsolutions.com/theme/index-hec.html">Back to the Ctrl+P homepage</a><br>
+			<a href="http://ctrl-p.co">Back to the Ctrl+P homepage</a><br>
 			
 			 
 		</div>
